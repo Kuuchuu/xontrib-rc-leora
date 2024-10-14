@@ -35,6 +35,7 @@ setuptools.setup(
         # 'xontrib-fzf-completions', # Provides fzf completions into your xonsh shell
         'xontrib-gitinfo', # Displays git information on entering a repository folder
         # 'xontrib-history-encrypt', # Encrypts the commands history file to prevent leaking sensitive data
+        'frogmouth', # Markdown viewer
         
         # Get more xontribs:
         #  * https://github.com/topics/xontrib
