@@ -349,9 +349,9 @@ if ON_LINUX or ON_DARWIN:
     # Input: `1000+10000`.
     # Output: `11,000`.
     #    
-    import xonsh.pretty
-    xonsh.pretty.for_type(type(1), lambda int, printer, cycle: printer.text(f'{int:,}'))
-    xonsh.pretty.for_type(type(1.0), lambda float, printer, cycle: printer.text(f'{float:,}'))
+    #import xonsh.pretty
+    #xonsh.pretty.for_type(type(1), lambda int, printer, cycle: printer.text(f'{int:,}'))
+    #xonsh.pretty.for_type(type(1.0), lambda float, printer, cycle: printer.text(f'{float:,}'))
 
     #
     # For the experienced users:
