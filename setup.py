@@ -30,6 +30,12 @@ setuptools.setup(
         'xontrib-jedi', # Jedi - an awesome autocompletion, static analysis and refactoring library for Python
         'xontrib-jump-to-dir', # Jump to used before directory by part of the path. Lightweight zero-dependency implementation of autojump or zoxide projects functionality. 
         'xontrib-clp', # Copy output to clipboard. URL: https://github.com/anki-code/xontrib-clp
+        'xontrib-vox', # Python virtual environment manager for xonsh
+        'xontrib-bashisms', # Bash-like interface extensions for xonsh
+        'xontrib-clp', # Copy output to clipboard
+        # 'xontrib-fzf-completions', # Provides fzf completions into your xonsh shell
+        'xontrib-gitinfo', # Displays git information on entering a repository folder
+        # 'xontrib-history-encrypt', # Encrypts the commands history file to prevent leaking sensitive data
         
         # Get more xontribs:
         #  * https://github.com/topics/xontrib
