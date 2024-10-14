@@ -185,23 +185,23 @@ if $XONSH_INTERACTIVE:
     # with the different set of installed packages it's a highly recommended approach to use `-s` to avoid errors.
     # Read more: https://github.com/anki-code/xonsh-cheatsheet/blob/main/README.md#install-xonsh-with-package-and-environment-management-system
     #
- #   _xontribs_to_load = (
-    #    'dalias',             # Library of decorator aliases (daliases) e.g. `$(@json echo '{}')`.
-    #    'jump_to_dir',        # Jump to used before directory by part of the path. Lightweight zero-dependency implementation of autojump or zoxide projects functionality. 
-    #    'prompt_bar',         # The bar prompt for xonsh shell with customizable sections. URL: https://github.com/anki-code/xontrib-prompt-bar
-    #    'whole_word_jumping', # Jumping across whole words (non-whitespace) with Ctrl+Left/Right and Alt+Left/Right on Linux or Option+Left/Right on macOS.
-    #    'back2dir',           # Back to the latest used directory when starting xonsh shell. URL: https://github.com/anki-code/xontrib-back2dir
-    #    'pipeliner',          # Let your pipe lines flow thru the Python code. URL: https://github.com/anki-code/xontrib-pipeliner
-    #    'cmd_done',           # Show long running commands durations in prompt with option to send notification when terminal is not focused. URL: https://github.com/jnoortheen/xontrib-cmd-durations
-    #    'jedi',               # Jedi - an awesome autocompletion, static analysis and refactoring library for Python. URL: https://github.com/xonsh/xontrib-jedi
-    #    'clp',                # Copy output to clipboard. URL: https://github.com/anki-code/xontrib-clp
-    #    'vox', # Python virtual environment manager for xonsh
-    #    'bashisms', # Bash-like interface extensions for xonsh
+    _xontribs_to_load = (
+        'dalias',             # Library of decorator aliases (daliases) e.g. `$(@json echo '{}')`.
+        'jump_to_dir',        # Jump to used before directory by part of the path. Lightweight zero-dependency implementation of autojump or zoxide projects functionality. 
+        'prompt_bar',         # The bar prompt for xonsh shell with customizable sections. URL: https://github.com/anki-code/xontrib-prompt-bar
+        'whole_word_jumping', # Jumping across whole words (non-whitespace) with Ctrl+Left/Right and Alt+Left/Right on Linux or Option+Left/Right on macOS.
+        'back2dir',           # Back to the latest used directory when starting xonsh shell. URL: https://github.com/anki-code/xontrib-back2dir
+        'pipeliner',          # Let your pipe lines flow thru the Python code. URL: https://github.com/anki-code/xontrib-pipeliner
+        'cmd_done',           # Show long running commands durations in prompt with option to send notification when terminal is not focused. URL: https://github.com/jnoortheen/xontrib-cmd-durations
+        'jedi',               # Jedi - an awesome autocompletion, static analysis and refactoring library for Python. URL: https://github.com/xonsh/xontrib-jedi
+        'clp',                # Copy output to clipboard. URL: https://github.com/anki-code/xontrib-clp
+        'vox', # Python virtual environment manager for xonsh
+        'bashisms', # Bash-like interface extensions for xonsh
         # 'fzf-completions', # Provides fzf completions into your xonsh shell
-    #    'gitinfo', # Displays git information on entering a repository folder
+        'gitinfo', # Displays git information on entering a repository folder
         # 'history-encrypt', # Encrypts the commands history file to prevent leaking sensitive data
- #   )
- #   xontrib load -s @(_xontribs_to_load)
+    )
+    xontrib load -s @(_xontribs_to_load)
 
     
     # ------------------------------------------------------------------------------
