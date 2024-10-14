@@ -32,7 +32,6 @@ setuptools.setup(
         'xontrib-clp', # Copy output to clipboard. URL: https://github.com/anki-code/xontrib-clp
         'xontrib-vox', # Python virtual environment manager for xonsh
         'xontrib-bashisms', # Bash-like interface extensions for xonsh
-        'xontrib-clp', # Copy output to clipboard
         # 'xontrib-fzf-completions', # Provides fzf completions into your xonsh shell
         'xontrib-gitinfo', # Displays git information on entering a repository folder
         # 'xontrib-history-encrypt', # Encrypts the commands history file to prevent leaking sensitive data
