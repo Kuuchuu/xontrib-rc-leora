@@ -185,7 +185,7 @@ if $XONSH_INTERACTIVE:
     # with the different set of installed packages it's a highly recommended approach to use `-s` to avoid errors.
     # Read more: https://github.com/anki-code/xonsh-cheatsheet/blob/main/README.md#install-xonsh-with-package-and-environment-management-system
     #
-    _xontribs_to_load = (
+ #   _xontribs_to_load = (
     #    'dalias',             # Library of decorator aliases (daliases) e.g. `$(@json echo '{}')`.
     #    'jump_to_dir',        # Jump to used before directory by part of the path. Lightweight zero-dependency implementation of autojump or zoxide projects functionality. 
     #    'prompt_bar',         # The bar prompt for xonsh shell with customizable sections. URL: https://github.com/anki-code/xontrib-prompt-bar
@@ -200,8 +200,8 @@ if $XONSH_INTERACTIVE:
         # 'fzf-completions', # Provides fzf completions into your xonsh shell
     #    'gitinfo', # Displays git information on entering a repository folder
         # 'history-encrypt', # Encrypts the commands history file to prevent leaking sensitive data
-    )
-    xontrib load -s @(_xontribs_to_load)
+ #   )
+ #   xontrib load -s @(_xontribs_to_load)
 
     
     # ------------------------------------------------------------------------------
