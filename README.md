@@ -9,7 +9,7 @@
     # Only for interactive mode:
     # (You can also create autoloadable xontrib using xontrib-template.)
     echo 'xontrib load rc_leora' >> ~/.xonshrc
-    echo "aliases['cheatsheet'] = 'wget -O /tmp/xonsh-cheatsheet.md https://raw.githubusercontent.com/anki-code/xonsh-cheatsheet/refs/heads/main/README.md && frogmouth /tmp/xonsh-cheatsheet.md'" >> ~/.xonshrc
+    echo "aliases['cheatsheet'] = 'frogmouth gh anki-code/xonsh-cheatsheet'" >> ~/.xonshrc
 
     # For interactive or non-interactive (https://xon.sh/xonshrc.html):
     # mkdir -p ~/.config/xonsh/rc.d/
