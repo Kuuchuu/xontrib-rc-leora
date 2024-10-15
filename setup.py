@@ -127,7 +127,7 @@ except (IOError, OSError):
 
 setuptools.setup(
     name='xontrib-rc-leora',
-    version='0.15.1.1',
+    version='0.15.1.2',
     license='MIT',
     author='anki-code',
     author_email='no@no.no',
