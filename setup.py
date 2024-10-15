@@ -9,6 +9,7 @@ except (IOError, OSError):
     long_description = ''
 
 user_bin = os.path.expanduser('~/.local/bin')
+user_home = os.path.expanduser('~')
 
 setuptools.setup(
     name='xontrib-rc-leora',
@@ -55,6 +56,7 @@ setuptools.setup(
     package_data={'xontrib': ['*.py', '*.xsh']},
     data_files=[
         (user_bin, ['scripts/systemSummary.sh']),
+        (user_home, ['scripts/.xonshrc']),
     ],
     platforms='any',
 )
