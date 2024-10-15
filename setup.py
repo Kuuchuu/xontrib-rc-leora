@@ -64,7 +64,7 @@ class PostInstallCommand(install):
                 "sudo apk add fzf onefetch zoxide starship -y"
             ],
             "termux": [
-                "pkg install fzf onefetch zoxide starship -y"
+                "pkg install fzf onefetch zoxide starship git -y && cd /tmp && git clone https://github.com/notflawffles/termux-nerd-installer.git && cd termux-nerd-installer && make install && termux-nerd-installer i mononoki && termux-nerd-installer set mononoki && cd ~"
             ],
         }
 
@@ -128,7 +128,7 @@ except (IOError, OSError):
 
 setuptools.setup(
     name='xontrib-rc-leora',
-    version='0.15.1.3',
+    version='0.15.2.0',
     license='MIT',
     author='anki-code',
     author_email='no@no.no',
