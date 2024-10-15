@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import setuptools
+import os
 
 try:
     with open('README.md', 'r', encoding='utf-8') as fh:
@@ -7,9 +8,11 @@ try:
 except (IOError, OSError):
     long_description = ''
 
+user_bin = os.path.expanduser('~/.local/bin')
+
 setuptools.setup(
     name='xontrib-rc-leora',
-    version='0.14.0.1',
+    version='0.15.0.0',
     license='MIT',
     author='anki-code',
     author_email='no@no.no',
@@ -49,6 +52,9 @@ setuptools.setup(
     },
     packages=['xontrib'],
     package_dir={'xontrib': 'xontrib'},
-    package_data={'xontrib': ['*.py', '*.xsh']},    
+    package_data={'xontrib': ['*.py', '*.xsh']},
+    data_files=[
+        (user_bin, ['scripts/systemSummary.sh']),
+    ],
     platforms='any',
 )
