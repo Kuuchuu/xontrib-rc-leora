@@ -1,1 +1,30 @@
+aliases['please'] = 'sudo'
+aliases['timers'] = 'systemctl list-timers'
+aliases['cheatsheet'] = 'frogmouth gh anki-code/xonsh-cheatsheet'
 
+# XONSH WEBCONFIG START
+$XONSH_COLOR_STYLE = 'dracula'
+xontrib load coreutils
+# XONSH WEBCONFIG END
+
+xontrib load rc_leora
+
+execx($(starship init xonsh))
+
+from xonsh.tools import register_custom_style
+dracFix = {
+    "Literal.BLUE__BACKGROUND_GREEN": "#000066",
+    "Literal.BLACK__BACKGROUND_GREEN": "#000033",
+    "PTK.AutoSuggestion": "#b3d9ff",
+    "PTK.Aborting": "#ff0066",
+}
+register_custom_style("dracFix", dracFix, base="monokai")
+$XONSH_COLOR_STYLE="dracFix"
+
+if $XONSH_INTERACTIVE:
+    import subprocess
+    import os
+    script_path = os.path.expanduser('~/.local/bin/systemSummary.sh')
+    subprocess.run([script_path])
+
+execx($(zoxide init xonsh), 'exec', __xonsh__.ctx, filename='zoxide')
