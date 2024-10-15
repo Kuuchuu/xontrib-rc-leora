@@ -2,6 +2,8 @@ aliases['please'] = 'sudo'
 aliases['timers'] = 'systemctl list-timers'
 aliases['cheatsheet'] = 'frogmouth gh anki-code/xonsh-cheatsheet'
 
+$PATH.append('/nix/var/nix/profiles/default/bin')
+
 # XONSH WEBCONFIG START
 $XONSH_COLOR_STYLE = 'dracula'
 xontrib load coreutils
