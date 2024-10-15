@@ -4,10 +4,13 @@ from setuptools.command.install import install
 import os
 import shutil
 import stat
+import subprocess
 
 class PostInstallCommand(install):
     def run(self):
         install.run(self)
+
+        self.install_system_packages()
 
         user_bin = os.path.expanduser('~/.local/bin')
         user_home = os.path.expanduser('~')
@@ -28,6 +31,96 @@ class PostInstallCommand(install):
         shutil.copy2(xonshrc_src, xonshrc_dest)
         print(f"Copied {xonshrc_src} to {xonshrc_dest}")
 
+    def install_system_packages(self):
+        distro_install_commands = {
+            "solus": [
+                "sudo eopkg install -y fzf onefetch zoxide starship"
+            ],
+            "ubuntu": [
+                "sudo apt update && sudo apt install -y fzf onefetch zoxide starship"
+            ],
+            "debian": [
+                "sudo apt update && sudo apt install -y fzf onefetch zoxide starship"
+            ],
+            "rocky": [
+                "sudo dnf install -y fzf onefetch zoxide starship"
+            ],
+            "fedora": [
+                "sudo dnf install -y fzf onefetch zoxide starship"
+            ],
+            "arch": [
+                "sudo pacman -Syu --noconfirm fzf onefetch zoxide starship"
+            ],
+            "manjaro": [
+                "sudo pacman -Syu --noconfirm fzf onefetch zoxide starship"
+            ],
+            "opensuse": [
+                "sudo zypper refresh && sudo zypper install -y fzf onefetch zoxide starship"
+            ],
+            "gentoo": [
+                "sudo emerge --ask app-shells/fzf app-shells/starship dev-vcs/onefetch sys-apps/zoxide"
+            ],
+            "alpine": [
+                "sudo apk add fzf onefetch zoxide starship"
+            ],
+            "termux": [
+                "pkg install fzf onefetch zoxide starship"
+            ],
+        }
+
+        distro = self.detect_linux_distro()
+
+        if distro == None:
+            return
+
+        if distro in distro_install_commands:
+            for command in distro_install_commands[distro]:
+                self.run_shell_command(command)
+
+        config_dir = os.path.expanduser("~/.config")
+        if not os.path.exists(config_dir):
+            os.makedirs(config_dir)
+            print(f"Created directory {config_dir}")
+        self.run_shell_command("starship preset pastel-powerline -o ~/.config/starship.toml")
+        self.run_shell_command("sed -i -e 's/#FCA17D/#cc99ff/g' ~/.config/starship.toml")
+
+    def detect_linux_distro(self):
+        import distro
+        distro_id = distro.id()
+
+        if distro_id is None and "TERMUX_VERSION" in os.environ:
+            print("Detected Termux environment")
+            return "termux"
+        if distro_id in ["ubuntu", "debian", "solus", "rocky", "fedora", "arch", "manjaro", "opensuse", "gentoo", "alpine"]:
+            return distro_id
+        else:
+            print(f"Unsupported Linux distribution: {distro_id}")
+            return None
+        # try:
+        #     with open("/etc/os-release") as f:
+        #         os_release = f.read().lower()
+        #         if "ubuntu" in os_release:
+        #             return "ubuntu"
+        #         elif "debian" in os_release:
+        #             return "debian"
+        #         elif "solus" in os_release:
+        #             return "solus"
+        #         elif "rocky" in os_release:
+        #             return "rocky"
+        # except FileNotFoundError:
+        #     pass
+
+        # return None
+
+    def run_shell_command(self, command):
+        try:
+            print(f"Running: {command}")
+            result = subprocess.run(command, shell=True, check=True, text=True, capture_output=True)
+            print(result.stdout)
+        except subprocess.CalledProcessError as e:
+            print(f"Error running command: {command}")
+            print(f"stderr: {e.stderr}")
+
 try:
     with open('README.md', 'r', encoding='utf-8') as fh:
         long_description = fh.read()
@@ -36,7 +129,7 @@ except (IOError, OSError):
 
 setuptools.setup(
     name='xontrib-rc-leora',
-    version='0.15.0.3',
+    version='0.15.1.0',
     license='MIT',
     author='anki-code',
     author_email='no@no.no',
@@ -45,6 +138,7 @@ setuptools.setup(
     long_description_content_type='text/markdown',
     python_requires='>=3.6',
     install_requires=[
+        'distro',
         'xonsh[full]', # The awesome shell.
         'xontrib-spec-mod', # Library of xonsh subprocess specification modifiers e.g. `$(@json echo '{}')`.
         'xontrib-prompt-bar', # The bar prompt for xonsh shell with customizable sections and Starship support. 
