@@ -3,6 +3,7 @@ import setuptools
 from setuptools.command.install import install
 import os
 import shutil
+import stat
 
 class PostInstallCommand(install):
     def run(self):
@@ -35,7 +36,7 @@ except (IOError, OSError):
 
 setuptools.setup(
     name='xontrib-rc-leora',
-    version='0.15.0.2',
+    version='0.15.0.3',
     license='MIT',
     author='anki-code',
     author_email='no@no.no',
