@@ -160,6 +160,8 @@ setuptools.setup(
         #  * https://github.com/topics/xontrib
         #  * https://github.com/xonsh/awesome-xontribs
         #  * https://xon.sh/api/_autosummary/xontribs/xontrib.html
+
+        'HyFetch',
     ],
     extras_require={
         "xxh": [
