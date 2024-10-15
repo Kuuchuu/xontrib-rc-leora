@@ -17,6 +17,8 @@ dracFix = {
     "Literal.BLACK__BACKGROUND_GREEN": "#000033",
     "PTK.AutoSuggestion": "#b3d9ff",
     "PTK.Aborting": "#ff0066",
+    "BLACK__BACKGROUND_GREEN": "#e6ccff",
+    "BACKGROUND_GREEN":	"#b366ff",
 }
 register_custom_style("dracFix", dracFix, base="monokai")
 $XONSH_COLOR_STYLE="dracFix"
