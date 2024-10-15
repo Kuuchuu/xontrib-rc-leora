@@ -85,32 +85,30 @@ class PostInstallCommand(install):
         self.run_shell_command("sed -i -e 's/#FCA17D/#cc99ff/g' ~/.config/starship.toml")
 
     def detect_linux_distro(self):
-        import distro
-        distro_id = distro.id()
+        # import distro # Does not work fully automated. distro must be pre-installed
+        # distro_id = distro.id()
 
-        if distro_id is None and "TERMUX_VERSION" in os.environ:
-            print("Detected Termux environment")
-            return "termux"
-        if distro_id in ["ubuntu", "debian", "solus", "rocky", "fedora", "arch", "manjaro", "opensuse", "gentoo", "alpine"]:
-            return distro_id
-        else:
-            print(f"Unsupported Linux distribution: {distro_id}")
-            return None
-        # try:
-        #     with open("/etc/os-release") as f:
-        #         os_release = f.read().lower()
-        #         if "ubuntu" in os_release:
-        #             return "ubuntu"
-        #         elif "debian" in os_release:
-        #             return "debian"
-        #         elif "solus" in os_release:
-        #             return "solus"
-        #         elif "rocky" in os_release:
-        #             return "rocky"
-        # except FileNotFoundError:
-        #     pass
+        # if distro_id is None and "TERMUX_VERSION" in os.environ:
+        #     print("Detected Termux environment")
+        #     return "termux"
+        # if distro_id in ["ubuntu", "debian", "solus", "rocky", "fedora", "arch", "manjaro", "opensuse", "gentoo", "alpine"]:
+        #     return distro_id
+        # else:
+        #     print(f"Unsupported Linux distribution: {distro_id}")
+        #     return None
+        try:
+            with open("/etc/os-release") as f:
+                os_release = f.read().lower()
+                for distro_id in ["ubuntu", "debian", "solus", "rocky", "fedora", "arch", "manjaro", "opensuse", "gentoo", "alpine"]:
+                    if distro_id in os_release:
+                        return distro_id
+        except FileNotFoundError:
+            if "TERMUX_VERSION" in os.environ:
+                print("Detected Termux environment")
+                return "termux"
+            pass
 
-        # return None
+        return None
 
     def run_shell_command(self, command):
         try:
@@ -138,7 +136,6 @@ setuptools.setup(
     long_description_content_type='text/markdown',
     python_requires='>=3.6',
     install_requires=[
-        'distro',
         'xonsh[full]', # The awesome shell.
         'xontrib-spec-mod', # Library of xonsh subprocess specification modifiers e.g. `$(@json echo '{}')`.
         'xontrib-prompt-bar', # The bar prompt for xonsh shell with customizable sections and Starship support. 
