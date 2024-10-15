@@ -61,10 +61,10 @@ class PostInstallCommand(install):
                 "sudo emerge --ask app-shells/fzf app-shells/starship dev-vcs/onefetch sys-apps/zoxide"
             ],
             "alpine": [
-                "sudo apk add fzf onefetch zoxide starship"
+                "sudo apk add fzf onefetch zoxide starship -y"
             ],
             "termux": [
-                "pkg install fzf onefetch zoxide starship"
+                "pkg install fzf onefetch zoxide starship -y"
             ],
         }
 
@@ -78,9 +78,10 @@ class PostInstallCommand(install):
                 self.run_shell_command(command)
 
         config_dir = os.path.expanduser("~/.config")
-        if not os.path.exists(config_dir):
-            os.makedirs(config_dir)
-            print(f"Created directory {config_dir}")
+        os.makedirs(config_dir, exist_ok=True)
+        # if not os.path.exists(config_dir):
+        #     os.makedirs(config_dir)
+        #     print(f"Created directory {config_dir}")
         self.run_shell_command("starship preset pastel-powerline -o ~/.config/starship.toml")
         self.run_shell_command("sed -i -e 's/#FCA17D/#cc99ff/g' ~/.config/starship.toml")
 
