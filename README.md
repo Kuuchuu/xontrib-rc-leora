@@ -5,17 +5,6 @@
     ```xonsh
     pip install -U git+https://github.com/kuuchuu/xontrib-rc-leora
     # pip install -U "git+https://github.com/kuuchuu/xontrib-rc-leora.git#egg=xontrib-rc-leora[xxh]" # Include xxh package 
-
-    # Only for interactive mode:
-    # (You can also create autoloadable xontrib using xontrib-template.)
-    echo 'xontrib load rc_leora' >> ~/.xonshrc
-    echo "aliases['cheatsheet'] = 'frogmouth gh anki-code/xonsh-cheatsheet'" >> ~/.xonshrc
-
-    # For interactive or non-interactive (https://xon.sh/xonshrc.html):
-    # mkdir -p ~/.config/xonsh/rc.d/
-    # echo 'xontrib load rc_leora' > ~/.config/xonsh/rc.d/rc_leora.xsh
-
-    xonsh
     ```
 
 ### See also
