@@ -1,6 +1,27 @@
 #!/usr/bin/env python
 import setuptools
+from setuptools.command.install import install
 import os
+import shutil
+
+class PostInstallCommand(install):
+    def run(self):
+        install.run(self)
+
+        user_bin = os.path.expanduser('~/.local/bin')
+        user_home = os.path.expanduser('~')
+
+        os.makedirs(user_bin, exist_ok=True)
+
+        script_src = os.path.join('scripts', 'systemSummary.sh')
+        script_dest = os.path.join(user_bin, 'systemSummary.sh')
+        shutil.copy2(script_src, script_dest)
+        print(f"Copied {script_src} to {script_dest}")
+
+        xonshrc_src = os.path.join('scripts', '.xonshrc')
+        xonshrc_dest = os.path.join(user_home, '.xonshrc')
+        shutil.copy2(xonshrc_src, xonshrc_dest)
+        print(f"Copied {xonshrc_src} to {xonshrc_dest}")
 
 try:
     with open('README.md', 'r', encoding='utf-8') as fh:
@@ -8,12 +29,9 @@ try:
 except (IOError, OSError):
     long_description = ''
 
-user_bin = os.path.expanduser('~/.local/bin')
-user_home = os.path.expanduser('~')
-
 setuptools.setup(
     name='xontrib-rc-leora',
-    version='0.15.0.0',
+    version='0.15.0.1',
     license='MIT',
     author='anki-code',
     author_email='no@no.no',
@@ -54,9 +72,8 @@ setuptools.setup(
     packages=['xontrib'],
     package_dir={'xontrib': 'xontrib'},
     package_data={'xontrib': ['*.py', '*.xsh']},
-    data_files=[
-        (user_bin, ['scripts/systemSummary.sh']),
-        (user_home, ['scripts/.xonshrc']),
-    ],
+    cmdclass={
+        'install': PostInstallCommand,
+    },
     platforms='any',
 )
