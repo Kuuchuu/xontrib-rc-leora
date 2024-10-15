@@ -22,9 +22,10 @@ register_custom_style("dracFix", dracFix, base="monokai")
 $XONSH_COLOR_STYLE="dracFix"
 
 if $XONSH_INTERACTIVE:
-    import subprocess
-    import os
-    script_path = os.path.expanduser('~/.local/bin/systemSummary.sh')
-    subprocess.run([script_path])
+    ![bash ~/.local/bin/systemSummary.sh]
+    # import subprocess
+    # import os
+    # script_path = os.path.expanduser('~/.local/bin/systemSummary.sh')
+    # subprocess.run([script_path])
 
 execx($(zoxide init xonsh), 'exec', __xonsh__.ctx, filename='zoxide')
