@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-clear && hyfetch || clear && uwufetch || clear && neofetch || clear && fastfetch || clear && screenfetch || clear && macchina || clear && nerdfetch
+clear && (hyfetch || uwufetch || neofetch || fastfetch || screenfetch || macchina || nerdfetch)
 uptime | awk -F'[ ,]+' '{print "System load: " $(NF-2) ", " $(NF-1) ", " $NF}' | awk '{print "  ❥ "$0}'
 echo "Disk Usage:" | awk '{print "  ❥ "$0}'
 df -h / | awk 'NR==1{sub(/Filesystem/, "Filesystem    "); print "      > "$0; next} {print "          ✦ "$0}'
