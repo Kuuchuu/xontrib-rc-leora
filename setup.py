@@ -18,6 +18,10 @@ class PostInstallCommand(install):
         shutil.copy2(script_src, script_dest)
         print(f"Copied {script_src} to {script_dest}")
 
+        st = os.stat(script_dest)
+        os.chmod(script_dest, st.st_mode | stat.S_IEXEC)
+        print(f"Set executable flag on {script_dest}")
+
         xonshrc_src = os.path.join('scripts', '.xonshrc')
         xonshrc_dest = os.path.join(user_home, '.xonshrc')
         shutil.copy2(xonshrc_src, xonshrc_dest)
@@ -31,7 +35,7 @@ except (IOError, OSError):
 
 setuptools.setup(
     name='xontrib-rc-leora',
-    version='0.15.0.1',
+    version='0.15.0.2',
     license='MIT',
     author='anki-code',
     author_email='no@no.no',
