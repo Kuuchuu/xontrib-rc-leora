@@ -84,6 +84,7 @@ class PostInstallCommand(install):
         #     print(f"Created directory {config_dir}")
         self.run_shell_command("starship preset pastel-powerline -o ~/.config/starship.toml")
         self.run_shell_command("sed -i -e 's/#FCA17D/#cc99ff/g' ~/.config/starship.toml")
+        self.run_shell_command("sed -i '/format = \"\"\"/a {env_name: {}\\n\\}' ~/.config/starship.toml")
 
     def detect_linux_distro(self):
         # import distro # Does not work fully automated. distro must be pre-installed
