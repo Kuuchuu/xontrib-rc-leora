@@ -3,6 +3,7 @@ aliases['timers'] = 'systemctl list-timers'
 aliases['cheatsheet'] = 'frogmouth gh anki-code/xonsh-cheatsheet'
 
 $PATH.append('/nix/var/nix/profiles/default/bin')
+$PATH.append('/home/blase/.cargo/bin')
 
 # XONSH WEBCONFIG START
 $XONSH_COLOR_STYLE = 'dracula'
