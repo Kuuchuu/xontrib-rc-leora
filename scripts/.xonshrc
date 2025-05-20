@@ -2,8 +2,8 @@ aliases['please'] = 'sudo'
 aliases['timers'] = 'systemctl list-timers'
 aliases['cheatsheet'] = 'frogmouth gh anki-code/xonsh-cheatsheet'
 
+import sys
 aliases['xuv'] = '$UV_PYTHON=@(sys.executable) uv pip @($args)'
-
 
 $PATH.append('/nix/var/nix/profiles/default/bin')
 $PATH.append('/home/blase/.cargo/bin')
